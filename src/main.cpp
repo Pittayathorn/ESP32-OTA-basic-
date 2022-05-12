@@ -24,14 +24,16 @@ void setup() {
     }
 
     WiFi.begin("sunny-ap", "6626754555");
+    USE_SERIAL.println("version 1.01");
 
 }
 
 void loop() {
     // wait for WiFi connection
+    
     if((WiFi.status() == WL_CONNECTED)) {
 
-        t_httpUpdate_return ret = ESPhttpUpdate.update("http://github.com/Pittayathorn/ESP32/raw/main/httpUpdate.ino.esp32.bin");
+        t_httpUpdate_return ret = ESPhttpUpdate.update("http://github.com/Pittayathorn/ESP32-OTA-basic-/raw/main/.pio/build/esp32dev/firmware.bin");
 
         switch(ret) {
             case HTTP_UPDATE_FAILED:
